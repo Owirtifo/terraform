@@ -115,7 +115,7 @@ resource "aws_instance" "netology" {
   }
 
   tags = {
-    Name = "Netology-${count.index + 1}"
+    Name = "Netology"
   }
 }
 
