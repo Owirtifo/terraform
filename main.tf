@@ -92,11 +92,11 @@ resource "aws_network_interface" "ni_test" {
 
 # Create Instance
 resource "aws_instance" "netology" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
-  vpc_security_group_ids = [aws_vpc.vpc-test.default_security_group_id]
-  subnet_id = aws_subnet.subnet_test.id
-  security_groups = [aws_security_group.sg-test.id]
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = "t2.micro"
+#  vpc_security_group_ids = [aws_vpc.vpc-test.default_security_group_id]
+#  subnet_id              = aws_subnet.subnet_test.id
+#  security_groups        = [aws_security_group.sg-test.id]
 
   network_interface {
     network_interface_id = aws_network_interface.ni_test.id
@@ -104,20 +104,20 @@ resource "aws_instance" "netology" {
   }
 
   root_block_device {
-          delete_on_termination = true
-          #iops                  = 3000
-          tags                  = {
-              Name = "Test EBS Volume"
-            }
-          #throughput            = 125
-          volume_size           = 8
-          volume_type           = "gp2"
-        }
+    delete_on_termination = true
+    #iops                  = 3000
+    tags                  = {
+      Name = "Test EBS Volume"
+    }
+    #throughput            = 125
+    volume_size           = 8
+    volume_type           = "gp2"
+  }
 
   tags = {
     Name = "Netology-${count.index + 1}"
   }
-
+}
 
 # Get Account ID, User ID, and ARN in which Terraform is authorized.
 data "aws_caller_identity" "current" {}
