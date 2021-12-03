@@ -135,15 +135,12 @@ module "ec2_instance" {
     device_index         = 0
   }]
 
-#  root_block_device = [
-#    {
-#      delete_on_termination = true
-#      tags                  = {
-#        Name = "Test EBS Volume"
-#      }
-#      volume_size           = 8
-#      volume_type           = "gp2"
-#    }]
+  root_block_device = [
+    {
+      delete_on_termination = true
+      volume_size           = 8
+      volume_type           = "gp2"
+    }]
 
   tags = {
     Name = "Netology"
