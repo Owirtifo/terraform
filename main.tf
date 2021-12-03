@@ -132,19 +132,19 @@ module "ec2_instance" {
 
   network_interface = [aws_network_interface.ni_test.id]
 
-  root_block_device = {
-    delete_on_termination = true
-    tags                  = {
-      Name = "Test EBS Volume"
-    }
-    volume_size           = 8
-    volume_type           = "gp2"
-  }
+  root_block_device = [
+    {
+      delete_on_termination = true
+      tags                  = {
+        Name = "Test EBS Volume"
+      }
+      volume_size           = 8
+      volume_type           = "gp2"
+    }]
 
   tags = {
     Name = "Netology"
   }
-}
 
 # Get Account ID, User ID, and ARN in which Terraform is authorized.
 data "aws_caller_identity" "current" {}
