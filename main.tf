@@ -127,10 +127,10 @@ module "ec2_instance" {
 
   name = "netology"
 
-  ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t2.micro"
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
 
-#  network_interface = [aws_network_interface.ni_test.id]
+  network_interface = [aws_network_interface.ni_test.id]
 
 #  root_block_device = [
 #    {
@@ -145,7 +145,7 @@ module "ec2_instance" {
   tags = {
     Name = "Netology"
   }
-
+}
 # Get Account ID, User ID, and ARN in which Terraform is authorized.
 data "aws_caller_identity" "current" {}
 
