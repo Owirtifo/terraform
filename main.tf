@@ -130,17 +130,20 @@ module "ec2_instance" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
 
-#  network_interface = [aws_network_interface.ni_test.id]
+  network_interface = [{
+    network_interface_id = aws_network_interface.ni_test.id
+    device_index         = 0
+  }]
 
-#  root_block_device = [
-#    {
-#      delete_on_termination = true
-#      tags                  = {
-#        Name = "Test EBS Volume"
-#      }
-#      volume_size           = 8
-#      volume_type           = "gp2"
-#    }]
+  root_block_device = [
+    {
+      delete_on_termination = true
+      tags                  = {
+        Name = "Test EBS Volume"
+      }
+      volume_size           = 8
+      volume_type           = "gp2"
+    }]
 
   tags = {
     Name = "Netology"
