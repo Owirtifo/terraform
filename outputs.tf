@@ -12,6 +12,11 @@ output "region" {
 }
 # Private IP
 output "private_ip" {
-  value = private_ip
+  value = module.ec2_instance.private_ip
+}
+
+# ID Subnet
+output "id_subnet" {
+  value = module.ec2_instance.private_ip
 }
 
